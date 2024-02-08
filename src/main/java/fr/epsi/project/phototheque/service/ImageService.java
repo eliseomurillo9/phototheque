@@ -7,26 +7,31 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Date;
 
 @Component
 @Transactional(readOnly = true)
 public class ImageService {
 
-    ImageRepository imageRepository;
+   ImageRepository imageRepository;
+    ImagesHandlerService imagesHandlerService;
 
-    public ImageService(ImageRepository imageRepository) {
+    public ImageService(ImageRepository imageRepository, ImagesHandlerService imagesHandlerService) {
         this.imageRepository = imageRepository;
+        this.imagesHandlerService = imagesHandlerService;
     }
+
 
     @Transactional(readOnly = false)
     public Image postImage(MultipartFile image,
                            String nameImage,
                            String category,
-                           String description) {
+                           String description) throws IOException {
         var imageEntity = new Image();
         var date = new Date();
-        System.out.println(image);
+        String apiUrl = "https://uf8m8gb2k0.execute-api.eu-central-1.amazonaws.com/epsi/generate-signed-url";
+        imagesHandlerService.imageHandler(apiUrl, image.getOriginalFilename());
         imageEntity.setNameImage(nameImage);
         imageEntity.setCategory(category);
         imageEntity.setDescription(description);

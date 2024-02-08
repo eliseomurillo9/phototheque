@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/v1/images")
 public class ImageController {
@@ -20,7 +22,7 @@ public class ImageController {
                             @RequestParam("nameImage") String nameImage,
                             @RequestParam("category") String category,
                             @RequestParam("description") String description
-                           ) {
+                           ) throws IOException {
 
         System.out.println(imageFile.getOriginalFilename());
         Image imageCreator = this.imageService.postImage(imageFile, nameImage, category, description);

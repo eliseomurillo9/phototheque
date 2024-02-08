@@ -1,0 +1,22 @@
+<settings>
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+            <layout>default</layout>
+            <snapshots><updatePolicy>always</updatePolicy></snapshots>
+            <!-- Disable SSL certificate validation -->
+            <pluginRepository>
+                <id>central</id>
+                <url>https://repo.maven.apache.org/maven2</url>
+                <releases><enabled>true</enabled></releases>
+                <snapshots><enabled>true</enabled></snapshots>
+                <layout>default</layout>
+                <snapshots><updatePolicy>always</updatePolicy></snapshots>
+            </pluginRepository>
+        </repository>
+    </repositories>
+    ...
+</settings>
