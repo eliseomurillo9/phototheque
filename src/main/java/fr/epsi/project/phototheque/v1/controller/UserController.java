@@ -1,9 +1,10 @@
 package fr.epsi.project.phototheque.v1.controller;
 
-import fr.epsi.project.phototheque.entity.User;
-import fr.epsi.project.phototheque.service.UserService;
 import fr.epsi.project.phototheque.v1.dto.UserDto;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import fr.epsi.project.phototheque.v1.entity.User;
+import fr.epsi.project.phototheque.v1.services.UserService;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -15,30 +16,30 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class UserController {
     UserService userService;
 
-    public UserController(UserService userService) {
+    UserController(UserService userService){
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping()
     public Page<UserDto> findAll(Pageable pageable){
-        return this.userService.findAll(pageable)
-                .map(it -> new UserDto(it.getId(), it.getFirstname(), it.getLastname()));
+      return this.userService.findAll(pageable)
+              .map(it -> new UserDto(it.getId(), it.getFirstname(), it.getLastname()));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDto> findUserById(@PathVariable(name = "id") Long id){
-        var user = this.userService.findUserById(id);
-        return ResponseEntity.of(user.map(it -> new UserDto(it.getId(), it.getFirstname(), it.getLastname())));
+    public ResponseEntity<UserDto> findById(@PathVariable("id") Long id){
+        var user = this.userService.findById(id);
+        return user.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(user
+                .map(it -> new UserDto(it.getId(), it.getLastname(), it.getLastname())).get());
     }
 
     @PostMapping
-    public ResponseEntity save(@RequestBody UserDto user){
+    public ResponseEntity createUser(@RequestBody User user){
         var userEntity = new User();
         userEntity.setFirstname(user.getFirstname());
         userEntity.setLastname(user.getLastname());
-        User userCreator = this.userService.save(userEntity);
-        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").build(userCreator.getId()))
+        this.userService.createUser(userEntity);
+        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").build(userEntity.getId()))
                 .build();
     }
-
 }

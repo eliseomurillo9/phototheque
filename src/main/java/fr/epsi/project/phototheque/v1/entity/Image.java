@@ -1,4 +1,4 @@
-package fr.epsi.project.phototheque.entity;
+package fr.epsi.project.phototheque.v1.entity;
 
 import jakarta.persistence.*;
 import org.springframework.web.multipart.MultipartFile;

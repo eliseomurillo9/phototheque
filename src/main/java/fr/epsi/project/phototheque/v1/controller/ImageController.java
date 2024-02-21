@@ -1,8 +1,7 @@
 package fr.epsi.project.phototheque.v1.controller;
 
-import fr.epsi.project.phototheque.entity.Image;
-import fr.epsi.project.phototheque.service.ImageService;
-import org.springframework.beans.factory.annotation.Autowired;
+import fr.epsi.project.phototheque.v1.entity.Image;
+import fr.epsi.project.phototheque.v1.services.ImageService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

@@ -1,10 +1,9 @@
-package fr.epsi.project.phototheque.service;
+package fr.epsi.project.phototheque.v1.services;
 
-import fr.epsi.project.phototheque.entity.Image;
-import fr.epsi.project.phototheque.repository.ImageRepository;
+import fr.epsi.project.phototheque.v1.entity.Image;
+import fr.epsi.project.phototheque.v1.repository.ImageRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

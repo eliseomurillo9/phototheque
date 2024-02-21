@@ -1,39 +1,36 @@
 package fr.epsi.project.phototheque.v1.dto;
 
 public class UserDto {
-    private String firstname;
-    private String lastname;
+    Long id;
+    String lastname;
+    String firstname;
 
-    private Long id;
+    public UserDto(String firstname, String lastname) {
+        this(null, firstname, lastname);
+    }
 
-
-    public UserDto(Long id, String firstname, String lastname) {
+    public UserDto(Long id, String lastname, String firstname) {
         this.id = id;
+        this.lastname = lastname;
         this.firstname = firstname;
+    }
+
+    public Long getId(){
+        return id;
+    }
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(final String lastname) {
         this.lastname = lastname;
     }
 
     public String getFirstname() {
-        return this.firstname;
+        return firstname;
     }
 
-    public void setFirstname(String firstname) {
+    public void setFirstname(final String firstname) {
         this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return this.lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }
