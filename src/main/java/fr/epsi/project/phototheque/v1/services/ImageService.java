@@ -30,7 +30,7 @@ public class ImageService {
         var imageEntity = new Image();
         var date = new Date();
         String apiUrl = "https://uf8m8gb2k0.execute-api.eu-central-1.amazonaws.com/epsi/generate-signed-url";
-        imagesHandlerService.imageHandler(apiUrl, image.getOriginalFilename());
+        imagesHandlerService.imageHandler(apiUrl, image);
         imageEntity.setNameImage(nameImage);
         imageEntity.setCategory(category);
         imageEntity.setDescription(description);

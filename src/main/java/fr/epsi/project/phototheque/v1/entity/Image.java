@@ -14,8 +14,6 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String imageFile;
-
     private String nameImage;
 
     private String category;
@@ -28,8 +26,7 @@ public class Image {
 
     private Date lastModificationDate;
 
-    @ElementCollection
-    private List<String> objectsDetected;
+    private String LinkObjectsDetected;
 
     private boolean isAPersonInThePicture;
 
@@ -86,11 +83,11 @@ public class Image {
     }
 
     public String getImageFile() {
-        return imageFile;
+        return LinkObjectsDetected;
     }
 
     public void setImageFile(String imageFile) {
-        this.imageFile = imageFile;
+        this.LinkObjectsDetected = imageFile;
     }
 
     public String getNameImage() {
@@ -101,12 +98,12 @@ public class Image {
         this.nameImage = nameImage;
     }
 
-    public List<String> getObjectsDetected() {
-        return objectsDetected;
+    public String getObjectsDetected() {
+        return LinkObjectsDetected;
     }
 
-    public void setObjectsDetected(List<String> objectsDetected) {
-        this.objectsDetected = objectsDetected;
+    public void setObjectsDetected(String objectsDetected) {
+        this.LinkObjectsDetected = objectsDetected;
     }
 
     public boolean isAPersonInThePicture() {
