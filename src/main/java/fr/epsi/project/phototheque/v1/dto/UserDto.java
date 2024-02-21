@@ -6,11 +6,14 @@ public class UserDto {
     String lastname;
     String firstname;
 
-    public UserDto(){
-        //
+    public UserDto(String firstname, String lastname) {
+        this(null, firstname, lastname);
     }
 
-    public UserDto(Long id, String firstname, String lastname) {
+    public UserDto(Long id, String lastname, String firstname) {
+        this.id = id;
+        this.lastname = lastname;
+        this.firstname = firstname;
     }
 
     public Long getId(){
