@@ -1,5 +1,6 @@
 package fr.epsi.project.phototheque.v1.controller;
 
+import com.fasterxml.jackson.databind.util.NativeImageUtil;
 import fr.epsi.project.phototheque.entity.Image;
 import fr.epsi.project.phototheque.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 @RestController
 @RequestMapping("/v1/images")
@@ -24,8 +26,7 @@ public class ImageController {
                             @RequestParam("description") String description
                            ) throws IOException {
 
-        System.out.println(imageFile.getOriginalFilename());
-        Image imageCreator = this.imageService.postImage(imageFile, nameImage, category, description);
+       Image imageCreator = this.imageService.postImage(imageFile, nameImage, category, description);
         return "testing";
     }
 }
