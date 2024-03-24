@@ -9,12 +9,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/v1/users")
 public class UserController {
     UserService userService;
-
+    Logger logger = LoggerFactory.getLogger(UserController.class);
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -40,5 +42,16 @@ public class UserController {
         return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").build(userCreator.getId()))
                 .build();
     }
+
+
+
+    @RequestMapping("/test")
+    public String test() {
+        this.logger.warn("This is working message");
+        return "Testing message";
+    }
+
+
+
 
 }
