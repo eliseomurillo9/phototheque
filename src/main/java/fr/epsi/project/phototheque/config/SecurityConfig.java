@@ -1,7 +1,7 @@
 package fr.epsi.project.phototheque.config;
 
-import fr.epsi.project.phototheque.JwtAuthenticationFilter;
-import fr.epsi.project.phototheque.JwtAuthentificationEntryPoint;
+import fr.epsi.project.phototheque.security.JwtAuthenticationFilter;
+import fr.epsi.project.phototheque.security.JwtAuthentificationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -1,6 +1,6 @@
 package fr.epsi.project.phototheque.v1.controller;
 
-import fr.epsi.project.phototheque.JwtHelper;
+import fr.epsi.project.phototheque.security.JwtHelper;
 import fr.epsi.project.phototheque.entity.JwtRequest;
 import fr.epsi.project.phototheque.entity.JwtResponse;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package fr.epsi.project.phototheque;
+package fr.epsi.project.phototheque.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -16,7 +16,7 @@ public class JwtHelper {
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
     //    public static final long JWT_TOKEN_VALIDITY =  60;
-    private String secret = "jeSuisUnTokenDeTestOnVerraSiCaFonctionneSinonTantPisDoncILFAUTQUECAFONCTIONNEBORDELDEMERDELAAAAAAAAAAALLEZZZZZZZZZZZTOKENjeveuxjusteverifierquelauthentificationFONCTIONNEBIIIIIIIIIIENNNNNNNNNN";
+    private String secret = "BearerUnTokenDeTestOnVerraSiCaFonctionneSinonTantPisDoncILFAUTQUECAFONCTIONNEBORDELDEMERDELAAAAAAAAAAALLEZZZZZZZZZZZTOKENjeveuxjusteverifierquelauthentificationFONCTIONNEBIIIIIIIIIIENNNNNNNNNN";
 
     //retrieve username from jwt token
     public String getUsernameFromToken(String token) {

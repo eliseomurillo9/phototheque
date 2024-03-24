@@ -1,6 +1,5 @@
-package fr.epsi.project.phototheque;
+package fr.epsi.project.phototheque.security;
 
-import fr.epsi.project.phototheque.v1.controller.UserController;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import jakarta.servlet.FilterChain;

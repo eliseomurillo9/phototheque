@@ -1,4 +1,4 @@
-package fr.epsi.project.phototheque;
+package fr.epsi.project.phototheque.security;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
