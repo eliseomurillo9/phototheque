@@ -3,10 +3,10 @@ package fr.epsi.project.phototheque.v1.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
@@ -39,19 +39,29 @@ public class ImagesHandlerService {
                 .body(jsonBody)
                 .retrieve()
                 .body(String.class);
-
+        System.out.println(result   );
 
         if (result != null) {
             System.out.println(result);
             ObjectMapper mapper = new ObjectMapper();
             Map<String, String> responseMap = mapper.readValue(result, Map.class);
-            ByteArrayResource resource = new ByteArrayResource(imageFile.getBytes());
+            String resource = "@C:/Users/elise/Downloads/tolede.jpg";
             System.out.println(resource);
 
             // Access the signedUrl
             String signedUrl = responseMap.get("signedUrl");
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Content-Type", "image/jpeg");
 
-            String imageAnalizer = restClient.put()
+            HttpEntity<String> entity = new HttpEntity<>(resource, headers);
+            RestTemplate restTemplate = new RestTemplate();
+            restTemplate.getInterceptors().add(new LoggingInterceptor());
+            ResponseEntity<String> response = restTemplate.exchange(signedUrl, HttpMethod.PUT, entity, String.class);
+            System.out.println("--IM STATUS CODE---" + response.getStatusCode());
+
+            System.out.println("---RESPONSe---" + response);
+
+            /*String imageAnalizer = restClient.put()
                     .uri(signedUrl)
                     .headers(httpHeaders -> {
                         httpHeaders.set("Content-Type", "image/jpeg");
@@ -59,9 +69,9 @@ public class ImagesHandlerService {
                     .body(resource)
                     .retrieve()
                     .body(String.class);
+*/
 
-
-            System.out.println(imageAnalizer);
+//            System.out.println(imageAnalizer);
         }
   /**      HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
